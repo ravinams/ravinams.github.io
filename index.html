@@ -1,43 +1,61 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Ravi Nams</title>
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Hi there, I'm Ravi Nams!</h1>
-				I am a 15+ yrs experienced software developer with a master's degree in computer science.
-Throughout my career, I have built everything from database systems to the back-end to front-end.
+---
+layout: default
+title: Home
+---
 
-My main tech focus in recent years has been C/C++/Java/Python, with a keen interest in Algorithms & data structures
-Also, I have expert knowledge in Oracle & MySQL and excellent knowledge in building software modules from scratch.
+{% if page.url == "/" %}
 
-I develop scalable, secure, object-oriented web applications, with a focus on efficient algorithm usage and optimal database structures.
+<!-- Featured
+================================================== -->
+<section class="featured-posts">
+    <div class="section-title">
+        <h2><span>Featured</span></h2>
+    </div>
+    <div class="row">
 
-And also , I have extensive experience with oracle tools and frameworks.
+    {% for post in site.posts %}
 
-******************** Technical Expertise ****************
+        {% if post.featured == true %}
 
-Back-end : C / C++ | Java / J2EE | Python
-Front-end : JavaScript | JSP / JSF / Prime-faces
-Database : Oracle | MySQL | MS SQL |PostgreSQL | SQLite
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
-		<footer>
-    		<ul>
-        		<li><a href="mailto:ravinams@outlook.com">email</a></li>
-        		<li><a href="https://github.com/ravinams">github.com/ravinams</a></li>
-			</ul>
-		</footer>
-	</body>
-</html>
+            {% include featuredbox.html %}
+
+        {% endif %}
+
+    {% endfor %}
+
+    </div>
+</section>
+
+{% endif %}
+
+<!-- Posts Index
+================================================== -->
+<section class="recent-posts">
+
+    <div class="section-title">
+
+        <h2><span>All Stories</span></h2>
+
+    </div>
+
+    <div class="row listrecent">
+
+        {% for post in paginator.posts %}
+
+        {% include postbox.html %}
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- Pagination
+================================================== -->
+<div class="bottompagination">
+<div class="pointerup"><i class="fa fa-caret-up"></i></div>
+<span class="navigation" role="navigation">
+    {% include pagination.html %}
+</span>
+</div>
+
